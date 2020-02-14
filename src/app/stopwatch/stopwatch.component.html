@@ -1,0 +1,8 @@
+<div class="">
+  <h1>Count: {{count}}</h1>
+  <button (click)="play.emit()">play</button>
+  <button (click)="pause.emit()">pause</button>
+  <button (click)="stop.emit()">stop</button>
+  <input #initialCountInput [ngModel]="initialCount" (ngModelChange)="onCountChange(initialCountInput.value)">
+  <input #intervalInput [ngModel]="interval" (ngModelChange)="onIntervalChange(intervalInput.value)">
+</div>

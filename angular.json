@@ -8,7 +8,9 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss",
-          "skipTests": true
+          "styleext": "scss",
+          "skipTests": true,
+          "inlineTemplate": false
         },
         "@schematics/angular:class": {
           "skipTests": true
@@ -81,7 +83,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "rxjs-stopwatch:build"
+            "browserTarget": "rxjs-stopwatch:build",
+            "port": 4220
           },
           "configurations": {
             "production": {
