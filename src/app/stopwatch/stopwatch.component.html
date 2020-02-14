@@ -1,8 +1,18 @@
-<div class="">
-  <h1>Count: {{count}}</h1>
+<div class="stopwatch">
+  {{count}}
+</div>
+<div class="buttons">
   <button (click)="play.emit()">play</button>
   <button (click)="pause.emit()">pause</button>
   <button (click)="stop.emit()">stop</button>
-  <input #initialCountInput [ngModel]="initialCount" (ngModelChange)="onCountChange(initialCountInput.value)">
-  <input #intervalInput [ngModel]="interval" (ngModelChange)="onIntervalChange(intervalInput.value)">
+</div>
+<div class="configuration">
+  <div class="configuration-item">
+    <label>start from:</label>
+    <input #initialCountInput [ngModel]="initialCount" (ngModelChange)="onCountChange(initialCountInput.value)">
+  </div>
+  <div class="configuration-item">
+    <label>interval:</label>
+    <input #intervalInput [ngModel]="interval" (ngModelChange)="onIntervalChange(intervalInput.value)">
+  </div>
 </div>

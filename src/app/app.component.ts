@@ -4,7 +4,7 @@ import { StopwatchService } from "./stopwatch/stopwatch.service";
 @Component({
   selector: 'dz-root',
   template: `
-      <h1>
+      <h1 style="text-align: center">
         Welcome to {{title}}!
       </h1>
     <dz-stopwatch [count]="count$ | async" 
