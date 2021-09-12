@@ -67,22 +67,18 @@ export class StopwatchService {
 
     this.count$ = this.stopwatchState$.pipe(
       pluck('count'),
-      // map(s => s.count),
       distinctUntilChanged()
     );
     this.initialCount$ = this.stopwatchState$.pipe(
       pluck('initialCount'),
-      // map(s => s.count),
       distinctUntilChanged()
     );
     this.interval$ = this.stopwatchState$.pipe(
       pluck('interval'),
-      // map(s => s.interval),
       distinctUntilChanged()
     );
     this.isPlaying$ = this.stopwatchState$.pipe(
       pluck('isPlaying'),
-      // map(s => s.isPlaying),
       distinctUntilChanged()
     );
 

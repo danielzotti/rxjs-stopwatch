@@ -16,6 +16,9 @@ export class StopwatchComponent implements OnInit {
   @Input()
   interval: number;
 
+  @Input()
+  isPlaying: boolean;
+
   @Output()
   stop: EventEmitter<void> = new EventEmitter<void>();
 
@@ -38,25 +41,10 @@ export class StopwatchComponent implements OnInit {
   }
 
   onCountChange(count: string) {
-    let countValue;
-    if (!count) {
-      countValue = 0;
-    }
-    else {
-      countValue = parseInt(count, 10);
-    }
-    this.countChange.emit(countValue);
+    this.countChange.emit(!count ? 0 : parseInt(count, 10));
   }
 
   onIntervalChange(interval: string) {
-    let intervalValue: number;
-    if (!interval) {
-      intervalValue = 0;
-    }
-    else {
-      intervalValue = parseInt(interval, 10);
-    }
-
-    this.intervalChange.emit(intervalValue);
+    this.intervalChange.emit(!interval ? 0 : parseInt(interval, 10));
   }
 }

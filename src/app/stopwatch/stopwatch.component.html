@@ -6,10 +6,16 @@
   <button (click)="pause.emit()" title="pause">pause</button>
   <button (click)="stop.emit()" title="stop">stop</button>
 </div>
+<div class="status">
+  <em>
+    {{ isPlaying ? 'the stopwatch is running...' : 'the stopwatch is stopped.' }}
+  </em>
+</div>
 <div class="configuration">
   <div class="configuration-item">
     <label>start from:</label>
-    <input type="number" #initialCountInput [ngModel]="initialCount" (ngModelChange)="onCountChange(initialCountInput.value)">
+    <input type="number" #initialCountInput [ngModel]="initialCount"
+           (ngModelChange)="onCountChange(initialCountInput.value)">
   </div>
   <div class="configuration-item">
     <label>interval:</label>

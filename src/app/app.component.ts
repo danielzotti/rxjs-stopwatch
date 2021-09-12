@@ -4,12 +4,13 @@ import { StopwatchService } from './stopwatch/stopwatch.service';
 @Component({
   selector: 'dz-root',
   template: `
-    <h1 style="text-align: center">
+    <h1>
       {{title}}
     </h1>
     <dz-stopwatch [count]="count$ | async"
                   [interval]="interval$ | async"
                   [initialCount]="initialCount$ | async"
+                  [isPlaying]="isPlaying$ | async"
                   (countChange)="onCountChange($event)"
                   (intervalChange)="onIntervalChange($event)"
                   (play)="onPlay()"
@@ -24,8 +25,7 @@ export class AppComponent {
   count$ = this.stopwatchService.count$;
   initialCount$ = this.stopwatchService.initialCount$;
   interval$ = this.stopwatchService.interval$;
-
-  // isPlaying$ = this.stopwatchService.isPlaying$;
+  isPlaying$ = this.stopwatchService.isPlaying$;
 
   constructor(private stopwatchService: StopwatchService) {
   }
