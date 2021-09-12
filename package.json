@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod",
+    "build:github": "ng build --prod --base-href /rxjs-stopwatch/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
