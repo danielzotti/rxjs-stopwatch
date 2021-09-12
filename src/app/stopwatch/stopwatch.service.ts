@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { interval, merge, Observable, Subject, BehaviorSubject, timer, NEVER } from "rxjs";
+import { merge, Observable, Subject, timer, NEVER } from 'rxjs';
 import {
   distinctUntilChanged,
-  filter,
   map,
   mapTo, pluck,
   scan,
@@ -10,7 +9,7 @@ import {
   startWith,
   switchMap, tap,
   withLatestFrom
-} from "rxjs/operators";
+} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -48,13 +47,13 @@ export class StopwatchService {
 
     this.stopwatchCommands$ = merge(
       // UI commands
-      this.play$.pipe(mapTo({isPlaying: true})),
-      this.pause$.pipe(mapTo({isPlaying: false})),
-      this.stop$.pipe(mapTo({...this.initialCounterState})),
-      this.inputCount$.pipe(map(c => ({count: c}))),
-      this.inputInterval$.pipe(map(i => ({interval: i}))),
-      this.inputCountDiff$.pipe(map(i => ({countDiff: i}))),
-      this.inputInitialCount$.pipe(map(c => ({initialCount: c, count: c}))),
+      this.play$.pipe(mapTo({ isPlaying: true })),
+      this.pause$.pipe(mapTo({ isPlaying: false })),
+      this.stop$.pipe(mapTo({ ...this.initialCounterState })),
+      this.inputCount$.pipe(map(c => ({ count: c }))),
+      this.inputInterval$.pipe(map(i => ({ interval: i }))),
+      this.inputCountDiff$.pipe(map(i => ({ countDiff: i }))),
+      this.inputInitialCount$.pipe(map(c => ({ initialCount: c, count: c }))),
       // programmatic commands
       this.stopwatchProgrammaticCommands$ //.pipe(map(c => ({count: c})))
     );
@@ -62,7 +61,7 @@ export class StopwatchService {
 
     this.stopwatchState$ = this.stopwatchCommands$.pipe(
       startWith(this.initialCounterState),
-      scan((counterState, command) => ({...counterState, ...command})),
+      scan((counterState, command) => ({ ...counterState, ...command })),
       shareReplay(1)
     );
 
@@ -87,7 +86,7 @@ export class StopwatchService {
       distinctUntilChanged()
     );
 
-    const calcultateNewCountValue$ = merge(
+    const calculateNewCountValue$ = merge(
       this.isPlaying$,
       this.inputInterval$
     ).pipe(
@@ -98,7 +97,7 @@ export class StopwatchService {
     );
 
 
-    const updateCounter$ = calcultateNewCountValue$.pipe(
+    const updateCounter$ = calculateNewCountValue$.pipe(
       tap(count => this.stopwatchProgrammaticCommandsSubject.next(count))
     );
 

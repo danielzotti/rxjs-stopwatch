@@ -1,7 +1,7 @@
 :host {
   margin: 0 auto;
   padding: 20px;
-  max-width: 230px;
+  max-width: 250px;
   text-align: center;
   position: relative;
   display: block;
@@ -21,18 +21,22 @@
     display: inline-block;
     vertical-align: middle;
     width: 33.33%;
-    font-size: 20px;
+    font-size: 18px;
+    text-transform: uppercase;
   }
 }
 
 .stopwatch, .buttons {
   margin-bottom: 15px;
 }
-
+.configuration-item {
+  text-align: left;
+}
 .configuration-item {
   white-space: nowrap;
 
-  input {
-    width: 50px;
+  label, input {
+    display: inline-block;
+    width: 50%;
   }
 }

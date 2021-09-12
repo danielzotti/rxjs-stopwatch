@@ -2,17 +2,17 @@
   {{count}}
 </div>
 <div class="buttons">
-  <button (click)="play.emit()">play</button>
-  <button (click)="pause.emit()">pause</button>
-  <button (click)="stop.emit()">stop</button>
+  <button (click)="play.emit()" title="play">play</button>
+  <button (click)="pause.emit()" title="pause">pause</button>
+  <button (click)="stop.emit()" title="stop">stop</button>
 </div>
 <div class="configuration">
   <div class="configuration-item">
     <label>start from:</label>
-    <input #initialCountInput [ngModel]="initialCount" (ngModelChange)="onCountChange(initialCountInput.value)">
+    <input type="number" #initialCountInput [ngModel]="initialCount" (ngModelChange)="onCountChange(initialCountInput.value)">
   </div>
   <div class="configuration-item">
     <label>interval:</label>
-    <input #intervalInput [ngModel]="interval" (ngModelChange)="onIntervalChange(intervalInput.value)">
+    <input type="number" #intervalInput [ngModel]="interval" (ngModelChange)="onIntervalChange(intervalInput.value)">
   </div>
 </div>

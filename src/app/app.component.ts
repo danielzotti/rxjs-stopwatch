@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
-import { StopwatchService } from "./stopwatch/stopwatch.service";
+import { StopwatchService } from './stopwatch/stopwatch.service';
 
 @Component({
   selector: 'dz-root',
   template: `
-      <h1 style="text-align: center">
-        Welcome to {{title}}!
-      </h1>
-    <dz-stopwatch [count]="count$ | async" 
+    <h1 style="text-align: center">
+      {{title}}
+    </h1>
+    <dz-stopwatch [count]="count$ | async"
                   [interval]="interval$ | async"
                   [initialCount]="initialCount$ | async"
-                  (countChange)="onCountChange($event)" 
-                  (intervalChange)="onIntervalChange($event)" 
-                  (play)="onPlay()" 
-                  (pause)="onPause()" 
+                  (countChange)="onCountChange($event)"
+                  (intervalChange)="onIntervalChange($event)"
+                  (play)="onPlay()"
+                  (pause)="onPause()"
                   (stop)="onStop()"
     ></dz-stopwatch>
   `,
@@ -24,33 +24,29 @@ export class AppComponent {
   count$ = this.stopwatchService.count$;
   initialCount$ = this.stopwatchService.initialCount$;
   interval$ = this.stopwatchService.interval$;
+
   // isPlaying$ = this.stopwatchService.isPlaying$;
 
   constructor(private stopwatchService: StopwatchService) {
   }
 
   onCountChange(count: number) {
-    // console.log(count);
     this.stopwatchService.inputInitialCount$.next(count);
   }
 
   onIntervalChange(interval: number) {
-    // console.log(interval);
     this.stopwatchService.inputInterval$.next(interval);
   }
 
   onPlay() {
-    // console.log('play');
     this.stopwatchService.play$.next();
   }
 
   onPause() {
-    // console.log('pause');
     this.stopwatchService.pause$.next();
   }
 
   onStop() {
-    // console.log('stop');
     this.stopwatchService.stop$.next();
   }
 }
